@@ -1,0 +1,37 @@
+import random
+import time
+
+def generate_otp(length):
+    charset = "0123456789"
+    otp = ""
+    for _ in range(length):
+        random_index = random.randint(0, len(charset) - 1)
+        otp += charset[random_index]
+    return otp
+
+def main():
+    length = int(input("Enter OTP length: "))
+    otp = generate_otp(length)
+    print("Generated OTP:", otp)
+    print("The OTP will expire in 20 seconds...")
+    time.sleep(20)
+    print("Oops, the OTP has expired!")
+
+    while True:
+        print("Press 1 to generate a new OTP")
+        print("Press 2 to exit")
+        choice = int(input("Enter your choice: "))
+
+        if choice == 1:
+            otp = generate_otp(length)
+            print("New OTP:", otp)
+            print("The OTP will expire in 20 seconds...")
+            time.sleep(20)
+            print("Oops, the OTP has expired!")
+        elif choice == 2:
+            break
+
+    print("Exiting...")
+
+if __name__ == "__main__":
+    main()
